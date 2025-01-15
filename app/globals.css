@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+}
+
+.no-arrows {
+  -webkit-appearance: none;  /* Remove number arrows in Chrome/Safari */
+  -moz-appearance: textfield; /* Remove number arrows in Firefox */
+  appearance: none;           /* Standard way to remove arrows */
+  outline: none;              /* Remove focus outline */
+}

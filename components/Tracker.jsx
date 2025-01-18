@@ -124,16 +124,26 @@ const Tracker = () => {
         <p className='text-3xl font-bold text-black-haze-100'>Tracker</p>
       </div>
 
-      <div className="stats flex bg-shuttle-gray-800 text-primary-content h-32 w-3/4 max-w-xl shadow-xl mt-10 mb-10">
+      <div className="stats flex bg-shuttle-gray-800 text-primary-content h-28 w-2/3 max-w-xl shadow-xl mt-10 mb-10 md:h-32">
 
         <div className="stat p-5">
           <div className="stat-title text-black-haze-100 text-center overflow-auto"><p className='text-md'>Today</p></div>
-          <div className="stat-value text-anakiwa-500 text-center">{ dailyConsumption !== null ? <>{dailyConsumption} ml</> : <span className='loading loading-dots'></span>}</div>
+
+          <div className="stat-value text-anakiwa-500 text-center">
+            { dailyConsumption !== null ?  <>
+              <span className="text-2xl sm:text-3xl md:text-4xl">{dailyConsumption}</span>{" "}
+              <span className="text-2xl sm:text-3xl md:text-4xl">ml</span></>  :  <span className='loading loading-dots'></span>}
+          </div>
         </div>
 
         <div className="stat p-5">
           <div className="stat-title text-black-haze-100 text-center"><p className='text-md'>Total</p></div>
-          <div className="stat-value text-anakiwa-500 text-center">{ allConsumption !== null ? <>{allConsumption / 1000} L</> : <span className='loading loading-dots'></span>}</div>
+
+          <div className="stat-value text-anakiwa-500 text-center">
+            { allConsumption !== null ? <>
+              <span className="text-2xl sm:text-3xl md:text-4xl">{(allConsumption / 1000).toFixed(2)}</span>{" "}
+              <span className="text-2xl sm:text-3xl md:text-4xl">L</span></> : <span className='loading loading-dots'></span>}
+          </div>
         </div>
 
       </div>
@@ -174,7 +184,7 @@ const Tracker = () => {
 
         <div className="relative w-full">
 
-          <progress className="progress progress-success bg-shuttle-gray-800 w-80 h-12 mt-1 shadow-xl" value={dailyConsumption} max={target}></progress>
+          <progress className="progress progress-success bg-shuttle-gray-800 w-60 h-12 mt-1 shadow-xl md:w-80 lg:w-96" value={dailyConsumption} max={target}></progress>
 
           <span className="absolute inset-0 flex items-center justify-center text-black-haze-100 font-bold" style={{top: '50%', transform: 'translateY(-50%)'}}>
             {dailyConsumption} / {target} ml

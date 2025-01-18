@@ -5,11 +5,11 @@ import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from '@c
 const Header = () => {
   return (
     
-      <div className="navbar px-14 bg-tuna-900 h-10 align-center pt-8">
+      <div className="navbar px-4 sm:px-10 lg:px-14 bg-tuna-900 h-16 flex items-center pt-8">
         <ClerkProvider>
 
         <div className="flex-1">
-          <Link href={"/"} className="btn btn-ghost text-3xl font-inter font-bold text-anakiwa-500">AquaWise</Link>
+          <Link href={"/"} className="btn btn-ghost text-xl sm:text-2xl lg:text-3xl font-inter font-bold text-anakiwa-500">AquaWise</Link>
         </div>
 
 
@@ -20,7 +20,7 @@ const Header = () => {
         <SignedIn>
 
           
-        <ul className="menu menu-horizontal bg-transparent text-black-haze-100 mx-5">
+        <ul className="menu menu-horizontal bg-transparent text-black-haze-100 mx-2 sm:mx-5">
           <li><Link href={"/tracker"}>Tracker</Link></li>
           <li><Link href={"/leaderboard"}>Leaderboard</Link></li>
         </ul>
@@ -29,22 +29,26 @@ const Header = () => {
           <div className="flex-none gap-2">
             <div className="dropdown dropdown-end">
               <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                <div className="w-15 rounded-full">
+
+                <div className="w-10 sm:w-12 rounded-full overflow-hidden">
                 <UserButton appearance={{ 
                     elements: { 
                       userButtonAvatarBox: { 
-                        width: '40px', 
-                        height: '40px' 
+                        width: '100%', 
+                        height: '100%' 
                       } 
                     } 
                   }} />
                 </div>
+
               </div>
             </div>
           </div>
+
         </SignedIn>
 
       </ClerkProvider>
+      
       </div>
   )
 }

@@ -124,7 +124,7 @@ const Tracker = () => {
         <p className='text-3xl font-bold text-black-haze-100'>Tracker</p>
       </div>
 
-      <div className="stats flex bg-shuttle-gray-800 text-primary-content h-28 w-2/3 max-w-xl shadow-xl mt-10 mb-10 md:h-32">
+      <div className="stats flex bg-shuttle-gray-800 text-primary-content h-28 w-9/12 max-w-xl shadow-xl mt-10 mb-10 md:h-32">
 
         <div className="stat p-5">
           <div className="stat-title text-black-haze-100 text-center overflow-auto"><p className='text-md'>Today</p></div>

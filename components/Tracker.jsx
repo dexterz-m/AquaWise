@@ -160,8 +160,8 @@ const Tracker = () => {
             <div className='flex flex-row items-center justify-center'>
               <input
                 type="number"
-                placeholder="goal"
-                className="input w-28 h-10 max-w-xs no-arrows border-none mr-5"
+                placeholder="New goal"
+                className="input w-28 h-10 max-w-xs no-arrows border-none mr-5 focus:ring-0 focus:outline-none focus:border-transparent bg-tuna-900"
                 value={newTarget}
                 onChange={(e) => setNewTarget(e.target.value)}
               />
@@ -194,7 +194,7 @@ const Tracker = () => {
 
       </div>
 
-      <div className="card bg-shuttle-gray-800 min-w-sm w-4/6 max-w-md shadow-xl mt-20 mb-20 p-5 py-2">
+      <div className="card bg-shuttle-gray-800 shadow-xl mt-20 mb-20 p-5 py-2">
 
         <div className="stat p-5">
 
@@ -202,11 +202,11 @@ const Tracker = () => {
           <div className="flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-2 mt-5">
 
             <div className="flex items-center space-x-1 my-2">
-              <input type="number" placeholder="add" className="input min-w-16 w-20 md:w-24 px-4 py-1 text-sm no-arrows" value={volume} onChange={(e) => setVolume(e.target.value)} />
+              <input type="number" placeholder="add" className="input min-w-16 w-20 md:w-24 px-4 py-1 text-sm no-arrows bg-tuna-900 focus:outline-none focus:ring-0 focus:border-transparent" value={volume} onChange={(e) => setVolume(e.target.value)} />
               <p className='text-black-haze-100 px-2 text-sm'>ml</p>
             </div>
 
-            <select value={volume} onChange={(e) => setVolume(e.target.value)} className="select select-bordered w-48 md:w-auto max-w-60 px-4 py-1 text-sm">
+            <select value={volume} onChange={(e) => setVolume(e.target.value)} className="select w-48 md:w-auto max-w-60 px-4 py-1 text-sm bg-tuna-900 focus:ring-0 focus:outline-none focus:border-transparent">
               <option value={0}>Presets</option>
               <option value={200}>Plastic Cup (200 ml)</option>
               <option value={240}>Glass of water (240 ml)</option>
@@ -216,7 +216,7 @@ const Tracker = () => {
 
           </div>
 
-          <button onClick={() => contributeVolume()} className="btn bg-anakiwa-600 hover:bg-anakiwa-700 text-black-haze-100 text-sm px-4 py-1 mt-5 w-full sm:w-auto">Contribute</button>
+          <button onClick={() => contributeVolume()} className="btn bg-anakiwa-600 hover:bg-anakiwa-700 text-black-haze-100 text-sm px-4 py-1 mt-5 w-full border-transparent focus:border-transparent focus:ring-0 hover:border-transparent hover:ring-0 sm:w-auto">Contribute</button>
 
         </div>
       </div>

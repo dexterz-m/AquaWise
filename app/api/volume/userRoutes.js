@@ -47,4 +47,25 @@ router.get('/users/:id', async (req, res) => {
   }
 });
 
+router.get('/leaderboard', async (req, res) => {
+  try {
+    const leaderboard = await User.aggregate([
+      {
+        $project: {
+          username: 1,
+          waterCounter: 1,
+          totalWater: { $sum: "$waterCounter" }
+        }
+      },
+      { $sort: { totalWater: -1 } },
+      { $limit: 10 }
+    ]);
+
+    res.json(leaderboard);
+  } catch (error) {
+    console.error('Error fetching leaderboard:', error);
+    res.status(500).send('Server error');
+  }
+});
+
 module.exports = router;

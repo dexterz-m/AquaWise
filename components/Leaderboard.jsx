@@ -1,17 +1,45 @@
-import React from 'react'
+'use client'
+
+import React,{ useEffect, useState } from 'react'
 
 const Leaderboard = () => {
+
+  const [leaderboard, setLeaderboard] = useState([]);
+
+  useEffect(() => {
+    const fetchLeaderboard = async () => {
+      try {
+        const response = await fetch('/api/leaderboard');
+        if (!response.ok) {
+          throw new Error('Failed to fetch leaderboard data');
+        }
+        const data = await response.json();
+        
+        if (Array.isArray(data)) {
+          setLeaderboard(data);
+        } else {
+          console.error('Unexpected response format:', data);
+        }
+      } catch (error) {
+        console.error('Error fetching leaderboard:', error);
+      }
+    };
+
+    fetchLeaderboard();
+  }, []);
+
+
   return (
     <div className='bg-tuna-900 text-black-haze-100 p-5 h-auto flex flex-col items-center'>
         <div className='mb-20'>
             <p className='text-3xl font-bold'>Leaderboard</p>
         </div>
 
-        <div className="card w-2/3 mb-44 h-auto max-w-xl bg-shuttle-gray-800 shadow-xl">
+        <div className="card mb-44 h-auto max-w-xl bg-shuttle-gray-800 shadow-xl">
           <div className="card-body">
 
             <div className="overflow-x-auto">
-              <table className="table text-center md:text-sm xs:text-xs sm:text-xs">
+              <table className="table text-center text-sm">
                 {/* head */}
                 <thead>
                   <tr className='text-anakiwa-500 text-md'>
@@ -23,65 +51,19 @@ const Leaderboard = () => {
 
                 <tbody>
 
-                  <tr className="text-yellow-400">
-                    <th>1</th>
-                    <td>User 1</td>
-                    <td>284.7</td>
-                  </tr>
-
-                  <tr className="text-slate-500">
-                    <th>2</th>
-                    <td>User 2</td>
-                    <td>154.2</td>
-                  </tr>
-
-                  <tr className="text-amber-600">
-                    <th>3</th>
-                    <td>User 3</td>
-                    <td>128.9</td>
-                  </tr>
-
-                  <tr className="hover">
-                    <th>4</th>
-                    <td>User 4</td>
-                    <td>115.2</td>
-                  </tr>
-
-                  <tr className="hover">
-                    <th>5</th>
-                    <td>User 5</td>
-                    <td>111.4</td>
-                  </tr>
-
-                  <tr className="hover">
-                    <th>6</th>
-                    <td>User 6</td>
-                    <td>111.4</td>
-                  </tr>
-
-                  <tr className="hover">
-                    <th>7</th>
-                    <td>User 7</td>
-                    <td>111.4</td>
-                  </tr>
-
+                  {Array.isArray(leaderboard) ? (
+                  leaderboard.map((user, index) => (
+                    <tr key={user.username} className={`text-${index === 0 ? 'yellow-400' : 'slate-500'}`}>
+                      <th>{index + 1}</th>
+                      <td>{user.username}</td>
+                      <td>{user.totalWater}</td>
+                    </tr>
+                  ))
+                ) : (
                   <tr>
-                    <th>8</th>
-                    <td>User 8</td>
-                    <td>111.4</td>
+                    <td colSpan="3">No data available</td>
                   </tr>
-
-                  <tr className="hover">
-                    <th>9</th>
-                    <td>User 9</td>
-                    <td>111.4</td>
-                  </tr>
-
-                  <tr className="hover">
-                    <th>10</th>
-                    <td>User 10</td>
-                    <td>111.4</td>
-                  </tr>
+                )}
 
                 </tbody>
                 

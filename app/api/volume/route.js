@@ -8,7 +8,7 @@ export async function POST(request) {
   await connectdb();
 
   const data = await request.json();
-  const { clerkUserId, volume, target } = data; // Accept the target value from the request
+  const { clerkUserId, volume, target, username } = data; // Accept the target value from the request
 
   // If a target value is provided, update the user's goal
   if (target) {

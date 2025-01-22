@@ -56,6 +56,12 @@ const Tracker = () => {
       return;
     }
 
+    if (dailyConsumption + volume > target) {
+      setError('Warning: Exceeds daily goal! Please adjust your contribution.');
+      setTimeout(() => setError(''), 3000);
+      return;
+    }
+
     const res = await fetch("/api/volume", {
       method: "POST",
       headers: {

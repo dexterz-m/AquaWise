@@ -30,7 +30,8 @@ const Leaderboard = () => {
 
 
   return (
-    <div className='bg-tuna-900 text-black-haze-100 p-5 h-auto flex flex-col items-center'>
+    <div className='bg-tuna-900 text-black-haze-100 p-5 min-h-screen h-auto flex flex-col items-center'>
+
         <div className='mb-20'>
             <p className='text-3xl font-bold'>Leaderboard</p>
         </div>
@@ -42,28 +43,49 @@ const Leaderboard = () => {
               <table className="table text-center text-sm">
                 {/* head */}
                 <thead>
+
                   <tr className='text-anakiwa-500 text-md'>
                     <th>Nr.</th>
                     <th>User</th>
                     <th>Drinked Water (L)</th>
                   </tr>
+
                 </thead>
 
                 <tbody>
 
-                  {Array.isArray(leaderboard) ? (
-                  leaderboard.map((user, index) => (
-                    <tr key={user.username} className={`text-${index === 0 ? 'yellow-400' : 'slate-500'}`}>
-                      <th>{index + 1}</th>
-                      <td>{user.username}</td>
-                      <td>{user.totalWater}</td>
-                    </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td colSpan="3">No data available</td>
-                  </tr>
-                )}
+                  {!leaderboard || leaderboard.length === 0 ? (
+                    
+                      <tr>
+                        <td colSpan="3">
+                          <div className='flex justify-center items-center h-20'>
+                            <span className='loading loading-dots text-anakiwa-500'></span>
+                          </div>
+                        </td>
+                      </tr>
+
+                    ) : (
+
+                    leaderboard.map((user, index) => {
+
+                      const rowColor =
+                      index === 0 ? 'text-yellow-400' :
+                      index === 1 ? 'text-gray-400' :
+                      index === 2 ? 'text-orange-600' :
+                      'text-black-haze-100';
+
+                      
+                    return (
+
+                      <tr key={user.username} className={`${rowColor} text-black-haze-100`}>
+                        <th>{index + 1}</th>
+                        <td>{user.username}</td>
+                        <td>{user.totalWater}</td>
+                      </tr>
+
+                      );
+                    })
+                  )}
 
                 </tbody>
                 

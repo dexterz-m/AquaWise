@@ -154,17 +154,19 @@ const Tracker = () => {
 
         <dialog id="my_modal_2" className="modal text-center bg-transparent">
 
-          <div className="modal-box bg-shuttle-gray-800 flex flex-col items-center justify-center">
+          <div className="modal-box bg-shuttle-gray-800 flex flex-col items-center justify-center text-black-haze-100">
             <h3 className="font-bold text-lg mb-5">Edit daily consumption goal</h3>
 
             <div className='flex flex-row items-center justify-center'>
+
               <input
                 type="number"
                 placeholder="New goal"
-                className="input w-28 h-10 max-w-xs no-arrows border-none mr-5 focus:ring-0 focus:outline-none focus:border-transparent bg-tuna-900"
+                className="input w-28 h-10 max-w-xs no-arrows border-none mr-5 focus:ring-0 focus:outline-none focus:border-transparent bg-tuna-900 text-black-haze-100"
                 value={newTarget}
                 onChange={(e) => setNewTarget(e.target.value)}
               />
+              
               <button onClick={editGoal} className="btn btn-sm h-10 bg-anakiwa-600 border-none hover:bg-anakiwa-700 text-black-haze-100">Edit</button>
 
             </div>
@@ -206,7 +208,7 @@ const Tracker = () => {
               <p className='text-black-haze-100 px-2 text-sm'>ml</p>
             </div>
 
-            <select value={volume} onChange={(e) => setVolume(e.target.value)} className="select w-48 md:w-auto max-w-60 px-4 py-1 text-sm bg-tuna-900 focus:ring-0 focus:outline-none focus:border-transparent">
+            <select value={volume} onChange={(e) => setVolume(e.target.value)} className="select w-48 md:w-auto max-w-60 px-4 py-1 text-sm bg-tuna-900 focus:ring-0 focus:outline-none focus:border-transparent text-black-haze-100">
               <option value={0}>Presets</option>
               <option value={200}>Plastic Cup (200 ml)</option>
               <option value={240}>Glass of water (240 ml)</option>

@@ -56,9 +56,13 @@ const Tracker = () => {
       return;
     }
 
-    if (dailyConsumption + volume > target) {
+    if (Number(dailyConsumption) + Number(volume) > target) {
       setError('Warning: Exceeds daily goal! Please adjust your contribution.');
       setTimeout(() => setError(''), 3000);
+      console.log("Daily Consumption:", dailyConsumption);
+      console.log("Volume:", volume);
+      console.log("Target:", target);
+      console.log("total,",dailyConsumption + volume)
       return;
     }
 
@@ -210,7 +214,7 @@ const Tracker = () => {
           <div className="flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-2 mt-5">
 
             <div className="flex items-center space-x-1 my-2">
-              <input type="number" placeholder="add" className="input min-w-16 w-20 md:w-24 px-4 py-1 text-sm no-arrows bg-tuna-900 focus:outline-none focus:ring-0 focus:border-transparent" value={volume} onChange={(e) => setVolume(e.target.value)} />
+              <input type="number" placeholder="add" className="input min-w-16 w-20 md:w-24 px-4 py-1 text-sm no-arrows bg-tuna-900 focus:outline-none focus:ring-0 focus:border-transparent text-black-haze-100" value={volume} onChange={(e) => setVolume(e.target.value)} />
               <p className='text-black-haze-100 px-2 text-sm'>ml</p>
             </div>
 

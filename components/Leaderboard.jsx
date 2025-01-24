@@ -80,7 +80,7 @@ const Leaderboard = () => {
                       <tr key={user.username} className={`${rowColor} text-black-haze-100`}>
                         <th>{index + 1}</th>
                         <td>{user.username}</td>
-                        <td>{user.totalWater}</td>
+                        <td>{(user.totalWater / 1000).toFixed(2)}</td>
                       </tr>
 
                       );

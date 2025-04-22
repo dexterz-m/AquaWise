@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useUser } from '@clerk/nextjs';
 import { MdEdit } from "react-icons/md";
+import checkContribution from '@/utils/checkContribution';
 
 const Tracker = () => {
   const { user } = useUser();
@@ -50,7 +51,7 @@ const Tracker = () => {
       return;
     }
 
-    if (volume < 1 || volume > 1000) {
+    if (checkContribution(volume)) {
       setError('Warning: Value should be between 1 and 1000 ml!');
       setTimeout(() => setError(''), 3000);
       return;
